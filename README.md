@@ -1,3 +1,0 @@
-# lab05ticketmachine
-
-teste
