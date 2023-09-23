@@ -9,16 +9,18 @@ import java.util.Iterator;
 class Troco {
 
     protected PapelMoeda[] papeisMoeda;
-
+    //protected int[] papelMoeda = {2, 5, 10, 20, 50, 100};
     public Troco(int valor) {
         papeisMoeda = new PapelMoeda[6];
         int count = 0;
-        while (valor % 100 != 0) {
+        while (valor >= 100) {
+            valor -= 100;
             count++;
         }
         papeisMoeda[5] = new PapelMoeda(100, count);
         count = 0;
-        while (valor % 50 != 0) {
+        while (valor >= 50) {
+            valor -= 50;
             count++;
         }
         papeisMoeda[4] = new PapelMoeda(50, count);
@@ -41,7 +43,7 @@ class Troco {
         while (valor % 2 != 0) {
             count++;
         }
-        papeisMoeda[1] = new PapelMoeda(2, count);
+        papeisMoeda[0] = new PapelMoeda(2, count);
     }
 
     public Iterator<PapelMoeda> getIterator() {
