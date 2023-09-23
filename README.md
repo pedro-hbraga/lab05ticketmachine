@@ -1,4 +1,3 @@
 # lab05ticketmachine
 
-
-asasa
+teste
