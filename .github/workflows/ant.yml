@@ -21,5 +21,7 @@ jobs:
         distribution: 'temurin'
     - name: entrando na pasta
       run: cd 'Source Code Inspection'
+    - name: ls teste
+      run: ls -la
     - name: Build with Ant
       run: ant -noinput -buildfile build.xml
