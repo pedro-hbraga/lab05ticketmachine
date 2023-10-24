@@ -10,6 +10,35 @@
 <project name="Source_Code_Inspection" default="default" basedir=".">
     <description>Builds, tests, and runs the project Source Code Inspection.</description>
     <import file="nbproject/build-impl.xml"/>
+
+    <property name="junit.version" value="5.8.0"/> <!-- Versão do JUnit -->
+    <property name="junit.lib.dir" value="lib"/> <!-- Diretório onde o JUnit JAR está localizado -->
+
+    <path id="junit.classpath">
+        <fileset dir="${junit.lib.dir}">
+            <include name="junit-platform-console-standalone-${junit.version}.jar"/>
+            <!-- Adicione outras dependências do JUnit, se necessário -->
+        </fileset>
+    </path>
+
+    <target name="init">
+        <mkdir dir="${junit.lib.dir}"/>
+        <!-- Baixa o JUnit e coloca no diretório lib -->
+        <get src="https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-console-standalone/${junit.version}/junit-platform-console-standalone-${junit.version}.jar" dest="${junit.lib.dir}" />
+    </target>
+
+    <target name="compile" depends="init">
+        <!-- Compile seus arquivos Java aqui -->
+    </target>
+
+    <target name="test" depends="compile">
+        <java classname="org.junit.platform.console.ConsoleLauncher" fork="true">
+            <classpath refid="junit.classpath"/>
+            <arg value="--scan-classpath"/>
+            <arg value="--details=tree"/>
+        </java>
+    </target>
+    
     <!--
 
     There exist several targets which are by default empty and which can be 
