@@ -12,9 +12,14 @@
     <import file="nbproject/build-impl.xml"/>
 
     <property name="junit.version" value="4.13.2"/> 
-    <property name="junit.lib.dir" value="lib"/> 
+    <property name="junit.lib.dir" value="lib"/>
+    <property name = "testdir" location = "teste" />
+    <property name = "srcdir" location = "src" />
+    <property name = "full-compile" value = "true" />
 
-    <path id="junit.classpath">
+    <path id = "classpath.base"/>
+
+    <path id="classpath.teste">
         <fileset dir="${junit.lib.dir}">
             <include name="junit-platform-console-standalone-${junit.version}.jar"/>
         </fileset>
@@ -22,23 +27,24 @@
 
     <target name="init">
         <mkdir dir="${junit.lib.dir}"/>
-        <!-- Baixa o JUnit e coloca no diretório lib -->
         <get src="https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-console-standalone/${junit.version}/junit-${junit.version}.jar" dest="${junit.lib.dir}" />
     </target>
 
-    <target name="compile" depends="init">
-        <javac srcdir="src" destdir="build/classes">
-            <classpath refid="junit.classpath"/>
-        </javac>
-    </target>
+    <target name = "compile" depends = "init">
+      <javac srcdir = "${srcdir}" destdir = "${testdir}" 
+         verbose = "${full-compile}">
+         <classpath refid = "classpath.test"/>
+      </javac>
+   </target>
 
-    <target name="test" depends="compile">
-        <java classname="org.junit.platform.console.ConsoleLauncher" fork="true">
-            <classpath refid="junit.classpath"/>
-            <arg value="--scan-classpath"/>
-            <arg value="--details=tree"/>
-        </java>
-    </target>
+    <target name = "test" depends = "compile">
+      <junit>
+         <classpath refid = "classpath.test" />
+         <formatter type = "brief" usefile = "false" />
+         <test name = "TicketMachineTest" />
+          <test name = "TrocoTeste" />
+      </junit>
+   </target>
     
     <!--
 
