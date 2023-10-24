@@ -11,26 +11,24 @@
     <description>Builds, tests, and runs the project Source Code Inspection.</description>
     <import file="nbproject/build-impl.xml"/>
 
-    <property name="junit.version" value="1.8.0"/> <!-- Versão do JUnit -->
-    <property name="junit.lib.dir" value="lib"/> <!-- Diretório onde o JUnit JAR está localizado -->
+    <property name="junit.version" value="4.13.2"/> 
+    <property name="junit.lib.dir" value="lib"/> 
 
     <path id="junit.classpath">
         <fileset dir="${junit.lib.dir}">
             <include name="junit-platform-console-standalone-${junit.version}.jar"/>
-            <!-- Adicione outras dependências do JUnit, se necessário -->
         </fileset>
     </path>
 
     <target name="init">
         <mkdir dir="${junit.lib.dir}"/>
         <!-- Baixa o JUnit e coloca no diretório lib -->
-        <get src="https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-console-standalone/${junit.version}/junit-platform-console-standalone-${junit.version}.jar" dest="${junit.lib.dir}" />
+        <get src="https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-console-standalone/${junit.version}/junit-${junit.version}.jar" dest="${junit.lib.dir}" />
     </target>
 
     <target name="compile" depends="init">
         <javac srcdir="src" destdir="build/classes">
             <classpath refid="junit.classpath"/>
-            <!-- Adicione outros caminhos do classpath conforme necessário -->
         </javac>
     </target>
 
