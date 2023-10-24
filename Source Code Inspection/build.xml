@@ -11,7 +11,7 @@
     <description>Builds, tests, and runs the project Source Code Inspection.</description>
     <import file="nbproject/build-impl.xml"/>
 
-    <property name="junit.version" value="1.8.0"/> <!-- Versão do JUnit -->
+    <property name="junit.version" value="4.13.2"/> <!-- Versão do JUnit -->
     <property name="junit.lib.dir" value="lib"/> <!-- Diretório onde o JUnit JAR está localizado -->
 
     <path id="junit.classpath">
