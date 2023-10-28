@@ -10,37 +10,6 @@
 <project name="Source_Code_Inspection" default="default" basedir=".">
     <description>Builds, tests, and runs the project Source Code Inspection.</description>
     <import file="nbproject/build-impl.xml"/>
-
-    <property name="junit.version" value="4.13.2"/> 
-    <property name="junit.lib.dir" value="lib"/>
-    <property name = "testdir" location = "teste" />
-    <property name = "srcdir" location = "src" />
-    <property name = "full-compile" value = "true" />
-
-    <path id = "classpath.base"/>
-
-    <path id="classpath.teste">
-        <fileset dir="${junit.lib.dir}">
-            <include name="junit-${junit.version}.jar"/>
-        </fileset>
-    </path>
-
-
-    <target name = "compile" depends = "init">
-      <javac srcdir = "${srcdir}" destdir = "${testdir}" 
-         verbose = "${full-compile}">
-         <classpath refid = "classpath.test"/>
-      </javac>
-   </target>
-
-    <target name = "test" depends = "compile">
-      <junit>
-         <classpath refid = "classpath.test" />
-         <formatter type = "brief" usefile = "false" />
-         <test name = "TicketMachineTest" />
-          <test name = "TrocoTeste" />
-      </junit>
-   </target>
     
     <!--
 
