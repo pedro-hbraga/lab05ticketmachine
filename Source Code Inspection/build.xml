@@ -21,14 +21,10 @@
 
     <path id="classpath.teste">
         <fileset dir="${junit.lib.dir}">
-            <include name="junit-platform-console-standalone-${junit.version}.jar"/>
+            <include name="junit-${junit.version}.jar"/>
         </fileset>
     </path>
 
-    <target name="init">
-        <mkdir dir="${junit.lib.dir}"/>
-        <get src="https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-console-standalone/${junit.version}/junit-${junit.version}.jar" dest="${junit.lib.dir}" />
-    </target>
 
     <target name = "compile" depends = "init">
       <javac srcdir = "${srcdir}" destdir = "${testdir}" 
